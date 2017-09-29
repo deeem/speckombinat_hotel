@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $requests = \DB::table('requests')->get();
+
+        return view('home', compact('requests'));
     }
 }

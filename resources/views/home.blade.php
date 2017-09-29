@@ -15,6 +15,12 @@
                     @endif
 
                     You are logged in!
+
+                    @foreach($requests as $request)
+                        <ul>
+                            <li>{{ $request->name }}</li>
+                        </ul>
+                    @endforeach
                 </div>
             </div>
         </div>
