@@ -40,25 +40,25 @@
               <form method="POST" action="ticket/store">
                   {{ csrf_field() }}
                 <div class="form-group">
-                  <input type="text" class="form-control" name="name" placeholder="Full Name">
+                  <input type="text" class="form-control" name="name" placeholder="Full Name" required minlength="4">
                 </div><!-- form-group name -->
                 <div class="form-group">
-                  <input type="text" class="form-control" name="phone" placeholder="Phone">
+                  <input type="text" class="form-control" name="phone" placeholder="Phone" required minlength="5" maxlength="15">
                 </div><!-- form-group phone -->
                 <div class="form-group row">
                   <label for="checkin" class="col-sm-4 col-form-label">Check in</label>
                   <div class="col-sm-8">
-                    <input type="date" class="form-control" name="checkin" id="checkin">
+                    <input type="date" class="form-control" name="checkin" id="checkin" required>
                   </div>
                 </div><!-- form-group checkin -->
                 <div class="form-group row">
                   <label for="checkout" class="col-sm-4 col-form-label">Check out</label>
                   <div class="col-sm-8">
-                    <input type="date" class="form-control" name="checkout" id="checkout">
+                    <input type="date" class="form-control" name="checkout" id="checkout" required>
                   </div>
                 </div><!-- form-group checkout -->
                 <div class="form-group">
-                  <input type="text" class="form-control" name="adults" placeholder="Adults">
+                  <input type="number" class="form-control" name="adults" placeholder="Adults" required>
                 </div><!-- form-group -->
                 <button type="submit" class="form-control">find room</button>
               </form>
