@@ -31,7 +31,8 @@
       <div class="col-md-5">
         <div class="booking-form">
           <h4>Booking</h4>
-          <form>
+          <form method="POST" action="ticket/store">
+              {{ csrf_field() }}
             <div class="form-group">
               <input type="text" class="form-control" name="name" placeholder="Full Name">
             </div><!-- form-group name -->
@@ -56,9 +57,20 @@
             <button type="submit" class="form-control">find room</button>
           </form>
           <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div><!-- booking-form -->
-      </div><!-- col -->
 
+          @if($errors->any())
+          <div class="alert alert-danger booking-alert">
+              <ul>
+                  @foreach($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div><!-- booking alert -->
+          @endif
+
+        </div><!-- booking-form -->
+
+      </div><!-- col -->
     </div><!-- row -->
   </div><!-- container -->
 </section>

@@ -16,11 +16,12 @@
 
                     You are logged in!
 
-                    @foreach($requests as $request)
-                        <ul>
-                            <li>{{ $request->name }}</li>
-                        </ul>
+                    <ul>
+                    @foreach($tickets as $ticket)
+                        <li>{{ $ticket->name }}</li>
                     @endforeach
+                    </ul>
+                    
                 </div>
             </div>
         </div>
