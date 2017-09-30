@@ -13,7 +13,7 @@ class TicketController extends Controller
             'name' => 'required|min:4',
             'phone' => 'required|min:5|max:15',
             'checkin' => 'required',
-            'chekout' => 'required',
+            'checkout' => 'required',
             'adults' => 'required|numeric'
         ]);
 
@@ -30,6 +30,8 @@ class TicketController extends Controller
         $ticket->checkout = $checkout;
         $ticket->adults = $adults;
         $ticket->save();
+
+        session()->flash('message', 'Thanks so much for reserving room!');
 
         return redirect('/');
     }
