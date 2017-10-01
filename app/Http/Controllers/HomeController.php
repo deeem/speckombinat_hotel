@@ -24,7 +24,8 @@ class HomeController extends Controller
     public function index()
     {
         $tickets = \DB::table('tickets')->get();
+        $users = \DB::table('users')->get();
 
-        return view('home', compact('tickets'));
+        return view('home', compact('tickets', 'users'));
     }
 }
