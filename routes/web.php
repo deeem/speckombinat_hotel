@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('landing.home');
 });
 
+Route::post('/ticket/store', 'TicketController@store');
+Route::get('/ticket/delete/{ticket}', 'TicketController@delete');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

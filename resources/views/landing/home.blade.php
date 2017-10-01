@@ -31,34 +31,54 @@
       <div class="col-md-5">
         <div class="booking-form">
           <h4>Booking</h4>
-          <form>
-            <div class="form-group">
-              <input type="text" class="form-control" name="name" placeholder="Full Name">
-            </div><!-- form-group name -->
-            <div class="form-group">
-              <input type="text" class="form-control" name="phone" placeholder="Phone">
-            </div><!-- form-group phone -->
-            <div class="form-group row">
-              <label for="checkin" class="col-sm-4 col-form-label">Check in</label>
-              <div class="col-sm-8">
-                <input type="date" class="form-control" name="checkin" id="checkin">
-              </div>
-            </div><!-- form-group checkin -->
-            <div class="form-group row">
-              <label for="checkout" class="col-sm-4 col-form-label">Check out</label>
-              <div class="col-sm-8">
-                <input type="date" class="form-control" name="checkout" id="checkout">
-              </div>
-            </div><!-- form-group checkout -->
-            <div class="form-group">
-              <input type="text" class="form-control" name="adults" placeholder="Adults">
-            </div><!-- form-group -->
-            <button type="submit" class="form-control">find room</button>
-          </form>
-          <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div><!-- booking-form -->
-      </div><!-- col -->
 
+          @if($flash = session('message'))
+              <div class="booking-message">
+                  {{ $flash }}
+              </div><!-- booking-message -->
+          @else
+              <form method="POST" action="ticket/store">
+                  {{ csrf_field() }}
+                <div class="form-group">
+                  <input type="text" class="form-control" name="name" placeholder="Full Name" required minlength="4">
+                </div><!-- form-group name -->
+                <div class="form-group">
+                  <input type="text" class="form-control" name="phone" placeholder="Phone" required minlength="5" maxlength="15">
+                </div><!-- form-group phone -->
+                <div class="form-group row">
+                  <label for="checkin" class="col-sm-4 col-form-label">Check in</label>
+                  <div class="col-sm-8">
+                    <input type="date" class="form-control" name="checkin" id="checkin" required>
+                  </div>
+                </div><!-- form-group checkin -->
+                <div class="form-group row">
+                  <label for="checkout" class="col-sm-4 col-form-label">Check out</label>
+                  <div class="col-sm-8">
+                    <input type="date" class="form-control" name="checkout" id="checkout" required>
+                  </div>
+                </div><!-- form-group checkout -->
+                <div class="form-group">
+                  <input type="number" class="form-control" name="adults" placeholder="Adults" required>
+                </div><!-- form-group -->
+                <button type="submit" class="form-control">find room</button>
+              </form>
+
+              @if($errors->any())
+              <div class="alert alert-danger booking-alert">
+                  <ul>
+                      @foreach($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div><!-- booking alert -->
+              @endif
+
+              <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          @endif
+
+        </div><!-- booking-form -->
+
+      </div><!-- col -->
     </div><!-- row -->
   </div><!-- container -->
 </section>
