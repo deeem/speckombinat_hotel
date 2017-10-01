@@ -27,7 +27,7 @@
                                     <td>{{ $ticket->phone }}</td>
                                     <td>{{ $ticket->checkin }} - {{ $ticket->checkout }}</td>
                                     <td>{{ $ticket->adults }}</td>
-                                    <td><a href="#"><i class="fa fa-trash"></i></a></td>
+                                    <td><a href="/ticket/delete/{{ $ticket->id }}" onclick="return confirm('Are you sure?');"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

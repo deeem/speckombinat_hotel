@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::post('/ticket/store', 'TicketController@store');
+Route::get('/ticket/delete/{ticket}', 'TicketController@delete');
 
 Auth::routes();
 

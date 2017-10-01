@@ -7,6 +7,11 @@ use App\Ticket;
 
 class TicketController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest', ['except' => 'delete']);
+    }
+
     public function store(Request $request)
     {
         $this->validate(request(), [
@@ -34,5 +39,12 @@ class TicketController extends Controller
         session()->flash('message', 'Thanks so much for reserving room!');
 
         return redirect('/');
+    }
+
+    public function delete(Ticket $ticket)
+    {
+        $ticket->delete();
+
+        return redirect('/home');
     }
 }
