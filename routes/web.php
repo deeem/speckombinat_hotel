@@ -23,3 +23,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/user/{user}', 'HomeController@show');
 Route::post('/home/user/store', 'HomeController@store');
+Route::get('/home/user/delete/{user}', 'HomeController@delete');

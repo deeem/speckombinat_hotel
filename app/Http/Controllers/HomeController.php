@@ -55,4 +55,12 @@ class HomeController extends Controller
 
         return redirect('/home');
     }
+
+    public function delete($id)
+    {
+        $user = \App\User::find($id);
+        $user->delete();
+
+        return redirect('/home');
+    }
 }

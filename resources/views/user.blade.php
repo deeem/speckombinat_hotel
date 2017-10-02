@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-default">Submit</button>
-                        <a class="btn btn-danger" href="#">delete</a>
+                        <a class="btn btn-danger" href="/home/user/delete/{{ $user->id }}" onclick="return confirm('Are you sure?');">delete</a>
                     </form>
                 </div><!-- panel-body -->
             </div><!-- panel -->
