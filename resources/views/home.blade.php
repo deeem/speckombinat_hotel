@@ -66,7 +66,7 @@
                                             <i class="fa fa-square-o"></i>
                                         @endif
                                     </td>
-                                    <td><a href="#"><i class="fa fa-pencil"></i></a></td>
+                                    <td><a href="/home/user/{{ $user->id }}"><i class="fa fa-pencil"></i></a></td>
                                 </tr>
                             @endforeach
                         </tbody>
