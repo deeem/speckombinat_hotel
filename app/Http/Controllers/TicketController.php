@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Ticket;
+use App\Mail\NewTicket;
 
 class TicketController extends Controller
 {
@@ -35,6 +36,11 @@ class TicketController extends Controller
         $ticket->checkout = $checkout;
         $ticket->adults = $adults;
         $ticket->save();
+
+        $users = \App\User::where('notifications', 1)->get();
+        foreach($users as $user) {
+            \Mail::to($user)->send(new NewTicket($ticket));
+        }
 
         session()->flash('message', 'Thanks so much for reserving room!');
 
