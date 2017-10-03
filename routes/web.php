@@ -12,6 +12,21 @@
 */
 
 Route::get('/', function () {
+
+    // example: $getLocale(Request::server('HTTP_ACCEPT_LANGUAGE'));
+    $getLocale = function ($string) {
+        $parts = explode(';', $string);
+        $locales = explode(',', $parts[0]);
+
+        if (in_array('uk', $locales)) {
+            return 'uk';
+        } else if (in_array('ru', $locales)) {
+            return 'ru';
+        }
+
+        return 'en';
+    };
+
     return view('landing.home');
 });
 
